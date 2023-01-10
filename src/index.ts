@@ -32,6 +32,7 @@ const start = async () => {
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
     
+    mongoose.set("strictQuery", false);
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected to tickets MongoDb');
   } catch (err) {
